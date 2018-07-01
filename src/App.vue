@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <PoiCalculator />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PoiCalculator from './components/PoiCalculator.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    PoiCalculator
   }
 }
 </script>
