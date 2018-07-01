@@ -1,36 +1,72 @@
 <template>
 <div class="calculator">
-    <PoiCalcScreen />
-    <PoiNumberPad />
-    <PoiOperatorPad />
+    <p class="title" style="grid-area:title">{{ PoiTitle }}</p>
+    <PoiCalcScreen style="margin:auto auto 20px auto;grid-area:screen;"/>
+    <PoiNumberPad @number="asdf" style="grid-area:numberPad;" />
+    <PoiBasicOperatorPad style="grid-area:operatorPad;" />
+    <PoiUtilPad style="grid-area:utilPad;" />
 </div>
 </template>
 
 <script>
 import PoiCalcScreen from './PoiCalcScreen.vue'
 import PoiNumberPad from './PoiNumberPad.vue'
-import PoiOperatorPad from './PoiOperatorPad.vue'
+import PoiBasicOperatorPad from './PoiBasicOperatorPad.vue'
+import PoiUtilPad from './PoiUtilPad.vue'
 
 export default {
     name: 'PoiCalculator',
     components: {
         PoiCalcScreen,
         PoiNumberPad,
-        PoiOperatorPad
+        PoiBasicOperatorPad,
+        PoiUtilPad
+    },
+    data: function() {
+        return {
+            PoiTitle: '- Poi Calculator -'
+        }
+    },
+    methods: {
+        asdf() {
+            alert("asdf")
+        }
+    },
+    events: function () {
+        return {
+        number: this.asdf()
+        }
     }
 }
 </script>
 
 <style>
+.title {
+    width: 100%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 18pt;
+    color: MintCream;
+    text-align: center;
+    margin: auto auto 0.5em auto;
+}
+
 .calculator {
-    width: 20em;
-    height: 20em;
+    width: 35em;
+    height: 50em;
     position: static;
     margin: auto;
-    padding: 0.5em;
+    padding: 0.5em 1.5em 1.5em 1.5em;
 
-    background-color: PowderBlue;
+    background-color: DarkSlateGrey;
 
     border-radius: 1em;
+
+    display: grid;
+    grid-template-areas:
+        'title title title title' 
+        'screen screen screen screen' 
+        'utilPad utilPad utilPad operatorPad'
+        'numberPad numberPad numberPad operatorPad';
+    grid-gap: 20px;
 }
 </style>

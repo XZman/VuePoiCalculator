@@ -1,6 +1,6 @@
 <template>
 <div class="expression">
-    <p>{{ poiExpression }}</p>
+    {{ poiScreenContent }}
 </div>
 </template>
 
@@ -9,7 +9,23 @@ export default {
     name: 'PoiCalcScreen',
     data: function() {
         return {
-            poiExpression: '1*(5+3)/2=233'
+            poiScreenContent: '1*(5+3)/2=233'
+        }
+    },
+    methods: {
+        evaluate: function() {
+            this.poiScreenContent = eval(this.poiScreenContent)
+        },
+        push(str) {
+            this.poiScreenContent += str
+        },
+        pop() {
+            var poiLastChar = this.poiScreenContent.slice(-1)
+            this.poiScreenContent = this.poiScreenContent.slice(0, -1)
+            return poiLastChar
+        },
+        clear() {
+            this.poiScreenContent = ''
         }
     }
 }
@@ -17,23 +33,17 @@ export default {
 
 <style>
 .expression {
-    background-color: SlateBlue;
-    opacity: 0.6;
-    width: auto;
-    height: auto;
-    margin: 20px 10px 20px 10px;
+    background-color: rgba(207, 226, 226, 0.4);
+    width: 95%;
+    height: 75%;
+    margin: auto;
     border-radius: 10px;
-}
-
-p {
     color: Ivory;
-    opacity: 1;
     margin: auto;
     padding: 0.3em;
-    vertical-align: center;
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    font-size: 20pt;
+    font-size: 35pt;
 }
 </style>

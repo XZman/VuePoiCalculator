@@ -1,6 +1,6 @@
 <template>
-<div class="poiButtonType">
-    <button type="button" value="poiButtonText" @click="$emit('click', poiButtonText)" />
+<div class="poiButton" @click="$emit(poiButtonType, poiButtonText)">
+    <p>{{ poiButtonText }}</p>
 </div>
 </template>
 
@@ -15,11 +15,15 @@ export default {
 </script>
 
 <style>
-.number {
+.poiButton {
+    background-color: rgba(105, 105, 105, 0.7);
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 10px;
 
-}
-
-.operator {
-
+    font-size: 20pt;
+    text-align: center;
+    color: White;
 }
 </style>
