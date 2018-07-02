@@ -1,6 +1,8 @@
 <template>
     <div class="utilPad">
-        <PoiButton poi-button-type="util" poi-button-text="CE" style="grid-area:CE;" />
+        <PoiButton poi-button-type="util" poi-button-text="(" style="grid-area:lbracket;" />
+        <PoiButton poi-button-type="util" poi-button-text=")" style="grid-area:rbracket;" />
+        <PoiButton poi-button-type="util" poi-button-text="Ans" style="grid-area:ans;" />
         <PoiButton poi-button-type="util" poi-button-text="C" style="grid-area:C;" />
         <PoiButton poi-button-type="util" poi-button-text="delete" style="grid-area:delete;" />
     </div>
@@ -26,6 +28,7 @@ export default {
     display: grid;
     grid-gap: 20px;
     grid-template-areas:
-        'CE C delete';
+        'lbracket rbracket C delete' 
+        'ans ans C delete';
 }
 </style>

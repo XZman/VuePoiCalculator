@@ -8,10 +8,19 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        poiScreenContent: ''
+        poiScreenContent: '',
+        poiAns: 0
     },
     mutations: {
-        push: (state, poiText) => state.poiScreenContent += poiText,
+        push: (state, poiText) => {
+            if (state.poiScreenContent.slice(-1) === '.' &&  poiText === '.') {
+                return
+            }
+            if (state.poiScreenContent === '0' && poiText == '0') {
+                return
+            }
+            state.poiScreenContent += poiText
+        },
         pop: state => {
             if (state.poiScreenContent.length == 0) {
                 return
@@ -22,27 +31,24 @@ const store = new Vuex.Store({
         },
         evaluate: state => state.poiScreenContent = eval(state.poiScreenContent),
         clear: state => state.poiScreenContent = '',
-        setPoiScreenContent: (state, poiNewContent) => state.poiScreenContent = poiNewContent
+        setPoiScreenContent: (state, poiNewContent) => state.poiScreenContent = poiNewContent,
+        setPoiAns: (state, ans) => state.poiAns = ans
     },
     actions: {
         number(context, num) {
-            if (context.state.poiScreenContent.slice(-1) === '.' && num === '.') {
-                return
-            }
-            if (context.state.poiScreenContent.length == 0 && num === '0') {
-                return
-            }
             context.commit('push', num)
         },
         operator(context, op) {
             if (op === '=') {
-                let result = ''
+                let resultStr = ''
                 try {
-                    result += eval(context.state.poiScreenContent)
+                    let resultNum = eval(context.state.poiScreenContent)
+                    context.commit('setPoiAns', resultNum)
+                    resultStr = '' + resultNum
                 } catch(err) {
-                    result = err.message
+                    resultStr = err.message
                 }
-                context.commit('setPoiScreenContent', result)
+                context.commit('setPoiScreenContent', resultStr)
             } else {
                 context.commit('push', op)
             } 
@@ -54,6 +60,15 @@ const store = new Vuex.Store({
             if (ut === 'delete') {
                 context.commit('pop')
             }
+            if (ut === '(' || ut === ')') {
+                context.commit('push', ut)
+            }
+            if (ut === 'Ans') {
+                context.commit('push', context.state.poiAns) 
+            }
+        },
+        mathFunction(context, func) {
+            context.commit('push', func + '(')
         }
     }
 })

@@ -57,7 +57,8 @@ export default {
     margin: auto;
     padding: 0.5em 1.5em 1.5em 1.5em;
 
-    background-color: DarkSlateGrey;
+    background: linear-gradient(-5deg, #ff9900, #cccc00);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
 
     border-radius: 1em;
 
