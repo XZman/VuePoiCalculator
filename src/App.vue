@@ -8,10 +8,10 @@
 import PoiCalculator from './components/PoiCalculator.vue'
 
 export default {
-  name: 'app',
-  components: {
-    PoiCalculator
-  }
+    name: 'app',
+    components: {
+        PoiCalculator
+    }
 }
 </script>
 

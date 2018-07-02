@@ -1,5 +1,5 @@
 <template>
-<div class="poiButton" @click="$emit(poiButtonType, poiButtonText)">
+<div class="poiButton" @click="poiOnClick">
     <p>{{ poiButtonText }}</p>
 </div>
 </template>
@@ -10,6 +10,11 @@ export default {
     props: {
         poiButtonText: String,
         poiButtonType: String
+    },
+    methods: {
+        poiOnClick() {
+            this.$store.dispatch(this.poiButtonType, this.poiButtonText)
+        }
     }
 }
 </script>
