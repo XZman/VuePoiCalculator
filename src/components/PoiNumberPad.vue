@@ -40,4 +40,12 @@ export default {
         'zero zero dot';
 }
 
+.numberPad > .poiButton {
+    background-color: rgba(155, 0, 0, 0.7);
+}
+
+.numberPad > .poiButton:active {
+    background-color: rgba(155, 0, 0, 0.9);
+    transition: background-color 0.3s;
+}
 </style>

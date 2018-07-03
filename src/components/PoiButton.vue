@@ -1,6 +1,6 @@
 <template>
 <div class="poiButton" @click="poiOnClick">
-    <p>{{ poiButtonText }}</p>
+    <span>{{ poiButtonText }}</span>
 </div>
 </template>
 
@@ -26,9 +26,15 @@ export default {
     height: 100%;
     margin: auto;
     border-radius: 10px;
+    padding: 0.4em 0.5em;
 
-    font-size: 20pt;
+    font-size: 25pt;
     text-align: center;
     color: White;
+}
+
+.poiButton:active {
+    background-color: rgba(105, 105, 105, 0.9);
+    transition: background-color 0.3s;
 }
 </style>

@@ -16,8 +16,8 @@ const store = new Vuex.Store({
             if (state.poiScreenContent.slice(-1) === '.' &&  poiText === '.') {
                 return
             }
-            if (state.poiScreenContent === '0' && poiText == '0') {
-                return
+            if (state.poiScreenContent === '0') {
+                state.poiScreenContent = ''
             }
             state.poiScreenContent += poiText
         },
@@ -49,6 +49,8 @@ const store = new Vuex.Store({
                     resultStr = err.message
                 }
                 context.commit('setPoiScreenContent', resultStr)
+            } else if (op === 'mod') {
+                context.commit('push', '%')
             } else {
                 context.commit('push', op)
             } 
@@ -66,9 +68,30 @@ const store = new Vuex.Store({
             if (ut === 'Ans') {
                 context.commit('push', context.state.poiAns) 
             }
+            if (ut === 'copy') {
+                document.execCommand('copy')
+            }
         },
         mathFunction(context, func) {
-            context.commit('push', func + '(')
+            if (func === 'ln') {
+                func = 'log'
+            }
+            context.commit('push', 'Math.' + func + '(')
+        },
+        mathConstant(context, c) {
+            if (c === 'e') {
+                c = 'E'
+            } else if (c === '&pi;') {
+                c = 'PI'
+            } else if (c === 'rand') {
+                let poiRand = Math.random()
+                if (context.state.poiScreenContent === '') {
+                    context.commit('setPoiAns', poiRand)
+                }
+                context.commit('push', '' + poiRand)
+                return
+            }
+            context.commit('push', 'Math.' + c)
         }
     }
 })

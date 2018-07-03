@@ -5,6 +5,7 @@
     <PoiButton poi-button-type="operator" poi-button-text="-" style="grid-area:subtract" />
     <PoiButton poi-button-type="operator" poi-button-text="+" style="grid-area:add" />
     <PoiButton poi-button-type="operator" poi-button-text="=" style="grid-area:equal" />
+    <PoiButton poi-button-type="operator" poi-button-text="mod" style="grid-area:percent" />
 </div>
 </template>
 
@@ -27,11 +28,21 @@ export default {
 
     display: grid;
     grid-gap: 20px;
-    grid-template-areas: 
+    grid-template-areas:
+        'percent'
         'divide' 
         'multiply' 
         'subtract' 
         'add'
         'equal';
+}
+
+.operatorPad > .poiButton {
+    background-color: rgba(102, 153, 0, 0.7);
+}
+
+.operatorPad > .poiButton:active {
+    background-color: rgba(102, 153, 0, 0.9);
+    transition: background-color 0.3s;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 <div class="expression">
-    {{ screenContent }}
+    <span>{{ screenContent }}</span>
 </div>
 </template>
 
@@ -9,7 +9,13 @@ export default {
     name: 'PoiCalcScreen',
     computed: {
         screenContent() {
-            return this.$store.state.poiScreenContent
+            let poiTemp = this.$store.state.poiScreenContent
+            poiTemp = poiTemp === '' ? '0' : poiTemp
+            poiTemp = poiTemp.replace(/Math./gi, '')
+            poiTemp = poiTemp.replace(/log/gi, 'ln')
+            poiTemp = poiTemp.replace(/E/gi, 'e')
+            poiTemp = poiTemp.replace(/PI/gi, '&pi;')
+            return poiTemp
         }
     }
 }
@@ -17,9 +23,10 @@ export default {
 
 <style>
 .expression {
-    background-color: rgba(207, 226, 226, 0.4);
-    width: 95%;
-    height: 75%;
+    background-color: rgba(207, 226, 226, 0.5);
+    width: 100%;
+    overflow: auto;
+    height: auto;
     margin: auto;
     border-radius: 10px;
     color: Ivory;
