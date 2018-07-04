@@ -36,6 +36,6 @@ export default {
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    font-size: 35pt;
+    font-size: 1.25em;
 }
 </style>

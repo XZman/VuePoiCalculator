@@ -108,7 +108,8 @@ export default {
 <style>
 * {
     box-sizing: border-box;
-    grid-gap: 1em;
+    font-size: 20pt;
+    grid-gap: 0.5em;
 }
 .yuudachiPoi {
     display: block;
@@ -128,13 +129,13 @@ export default {
 }
 
 .poiTitleBlock {
-    position: relative;
+    //position: absolute;
 }
 
 .title, .subtitle {
     width: 100%;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 18pt;
+    font-size: 0.9em;
     color: MintCream;
     text-align: center;
     margin: auto auto 0 auto;
@@ -142,11 +143,12 @@ export default {
 }
 
 .subtitle {
-    font-size: 12pt;
+    font-size: 0.6em;
     margin: 0;
 }
 
 .calculator {
+    box-sizing: content-box;
     width: auto;
     max-width: 95%;
     min-width: 50%;
@@ -154,8 +156,6 @@ export default {
     max-height: 95%;
     min-height: 50%;
     position: absolute;
-    left: 2%;
-    top: 2%;
     margin: auto;
     padding: 1% 2% 3% 2%;
 

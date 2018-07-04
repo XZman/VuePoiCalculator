@@ -26,9 +26,9 @@ export default {
     height: 100%;
     margin: auto;
     border-radius: 10px;
-    padding: 0.4em 0.5em;
+    padding: 0.2em 0.1em;
 
-    font-size: 25pt;
+    font-size: 1.25em;
     text-align: center;
     color: White;
 }
