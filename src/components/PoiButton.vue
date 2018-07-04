@@ -1,6 +1,6 @@
 <template>
 <div class="poiButton" @click="poiOnClick">
-    <span>{{ poiButtonText }}</span>
+    <span v-html="poiButtonText" />
 </div>
 </template>
 

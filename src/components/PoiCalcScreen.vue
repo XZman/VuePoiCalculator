@@ -1,6 +1,6 @@
 <template>
 <div class="expression">
-    <span>{{ screenContent }}</span>
+    <span v-html="screenContent" />
 </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
             poiTemp = poiTemp.replace(/log/gi, 'ln')
             poiTemp = poiTemp.replace(/E/gi, 'e')
             poiTemp = poiTemp.replace(/PI/gi, '&pi;')
+            poiTemp = poiTemp.replace(/\*\*/gi, '^')
             return poiTemp
         }
     }
