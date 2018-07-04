@@ -93,9 +93,9 @@ export default {
     },
     methods: {
         poi() {
-            alert('poipoipoi!')
+            // alert('poipoipoi!')
 
-            let poiRand = 1
+            let poiRand = Math.floor(Math.random() * 6) + 1
             while (poiRand === this.Yuudachi.Number) {
                 poiRand = Math.floor(Math.random() * 6) + 1
             }
