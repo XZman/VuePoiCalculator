@@ -12,7 +12,7 @@
         <PoiMathFunctionPad style="grid-area:mathFuncPad;" />
         <PoiMathConstantPad style="grid-area:mathConstPad;" />
     </div>
-    <div class="yuudachiPoi" />
+    <div class="yuudachiPoi" :style="yuudachiPoiStyle" />
 </div>
 </template>
 
@@ -23,6 +23,40 @@ import PoiBasicOperatorPad from './PoiBasicOperatorPad.vue'
 import PoiUtilPad from './PoiUtilPad.vue'
 import PoiMathFunctionPad from './PoiMathFunctionPad.vue'
 import PoiMathConstantPad from './PoiMathConstantPad.vue'
+
+// eslint-disable-next-line
+const YuudachiList = {
+        poi1: {
+            Number: 1,
+            left: '40%',
+            top: '-15%'
+        },
+        poi2: {
+            Number: 2,
+            left: '30%',
+            top: '-5%'
+        },
+        poi3: {
+            Number: 3,
+            left: '0',
+            top: '0'
+        },
+        poi4: {
+            Number: 4,
+            left: '40%',
+            top: '2%'
+        },
+        poi5: {
+            Number: 5,
+            left: '35%',
+            top: '-3%'
+        },
+        poi6: {
+            Number: 6,
+            left: '10%',
+            top: '2%'
+        }
+}
 
 export default {
     name: 'PoiCalculator',
@@ -38,24 +72,34 @@ export default {
         return {
             PoiTitle: 'Poi Calculator',
             PoiSubtitle: '- click here to poi -',
-            yuudachiNumber: 1
+            Yuudachi: {
+                Number: 1,
+                left: '40%',
+                top: '-15%'
+            }
         }
     },
     computed: {
         yuudachiURL() {
-            return process.env.BASE_URL + '/public/yuudachiPoi/poi' + this.yuudachiNumber + '.png'
+            return require('../../assets/yuudachiPoi/poi' + this.Yuudachi.Number + '.png')
         },
         yuudachiPoiStyle() {
             return {
                 backgroundImage: 'url(' + this.yuudachiURL + ')',
-                left: '0',
-                top: '0'
+                left: this.Yuudachi.left,
+                top: this.Yuudachi.top
             }
         }
     },
     methods: {
         poi() {
-            alert(process.env.BASE_URL)
+            alert('poipoipoi!')
+
+            let poiRand = 1
+            while (poiRand === this.Yuudachi.Number) {
+                poiRand = Math.floor(Math.random() * 6) + 1
+            }
+            this.Yuudachi = eval('YuudachiList.poi' + poiRand) 
         }
     }
 }
@@ -70,7 +114,8 @@ export default {
     width: 90%;
     height: 90%;
     position: absolute;
-    background-image: url("../../public/yuudachiPoi/poi1.png");
+    background-image: url("../../assets/yuudachiPoi/poi1.png");
+    transition: background-image 1.5s, left 1.5s, top 1.5s;
     left: 50%;
     top: 10%;
     background-size: contain;
