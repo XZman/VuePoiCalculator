@@ -29,7 +29,7 @@ export default {
     margin: auto;
 
     display: grid;
-    grid-gap: 20px;
+    //grid-gap: 20px;
     grid-template-areas: 
         'exp ln' 
         'asin sin' 

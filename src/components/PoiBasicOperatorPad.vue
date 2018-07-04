@@ -27,7 +27,7 @@ export default {
     margin: auto;
 
     display: grid;
-    grid-gap: 20px;
+    //grid-gap: 20px;
     grid-template-areas:
         'percent'
         'divide' 

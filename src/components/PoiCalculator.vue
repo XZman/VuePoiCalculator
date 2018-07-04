@@ -108,6 +108,7 @@ export default {
 <style>
 * {
     box-sizing: border-box;
+    grid-gap: 1em;
 }
 .yuudachiPoi {
     display: block;
@@ -147,14 +148,14 @@ export default {
 
 .calculator {
     width: auto;
-    max-width: 90%;
-    min-width: 600px;
+    max-width: 95%;
+    min-width: 50%;
     height: auto;
-    max-height: 80%;
-    min-height: 600px;
-    position: fixed;
-    left: 3%;
-    top: 5%;
+    max-height: 95%;
+    min-height: 50%;
+    position: absolute;
+    left: 2%;
+    top: 2%;
     margin: auto;
     padding: 1% 2% 3% 2%;
 
@@ -178,6 +179,6 @@ export default {
         'screen screen screen screen screen screen'
         'mathConstPad mathConstPad utilPad utilPad utilPad operatorPad'
         'mathFuncPad mathFuncPad numberPad numberPad numberPad operatorPad';
-    grid-gap: 20px;
+    //grid-gap: 20px; 
 }
 </style>
